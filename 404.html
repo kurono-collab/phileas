@@ -1,51 +1,34 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="doc">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Not found · Phileas</title>
 <meta name="description" content="Page not found.">
+<meta name="color-scheme" content="dark">
+<script>(function(){var K="phileas-theme",r=document.documentElement,w=1;function stored(){try{return localStorage.getItem(K)==="light"}catch(x){return null}}function show(l){if(l)r.setAttribute("data-theme","light");else r.removeAttribute("data-theme");var c=document.getElementById("theme-light");if(c)c.checked=l}function sync(){var l=stored();if(w&&l!==null)show(l)}sync();document.addEventListener("DOMContentLoaded",sync);window.addEventListener("pageshow",function(e){if(e.persisted)sync()});document.addEventListener("change",function(e){var c=e.target;if(c.id!=="theme-light")return;show(c.checked);try{if(c.checked)localStorage.setItem(K,"light");else localStorage.removeItem(K)}catch(x){w=0}})})();</script>
+<meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<style>
-:root{--surface:#FEF8F7;--ink:#3E3230;--ink2:#766A69;--brand:#AB4A35;--hairline:#E3DBDA;color-scheme:light dark}
-@media (prefers-color-scheme:dark){:root{--surface:#1C1615;--ink:#F3EBE9;--ink2:#A99C9A;--brand:#E28B72;--hairline:#463C3A}}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--surface);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-main{max-width:40rem;margin:0 auto;padding:40px 16px 64px}
-h1,h2,h3{font-family:"New York",ui-serif,Georgia,"Times New Roman",serif;font-weight:600;line-height:1.2}
-h1{font-size:2.1rem;margin:.2em 0 .3em}
-h2{font-size:1.5rem;margin:2.2em 0 .4em;padding-top:1.2em;border-top:1px solid var(--hairline)}
-h3{font-size:1.15rem;margin:1.8em 0 .3em}
-p,li{max-width:66ch}
-ul{padding-left:1.2em}
-li{margin:.35em 0}
-a{color:var(--brand);text-underline-offset:2px}
-.mark{width:56px;height:56px;color:var(--ink);display:block}
-.lead{font-size:1.15rem;color:var(--ink)}
-.muted{color:var(--ink2);font-size:.92rem}
-nav.lang{display:flex;gap:16px;font-size:.95rem;margin:.4em 0 0}
-header a.home{display:inline-block;text-decoration:none}
-footer{margin-top:3em;padding-top:1em;border-top:1px solid var(--hairline);color:var(--ink2);font-size:.9rem}
-</style>
+<link rel="stylesheet" href="/site.css">
 </head>
-<body>
-<main>
-<header><a class="home" href="/" aria-label="Phileas"><svg aria-hidden="true" class="mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-<defs><clipPath id="markclip"><path transform="translate(53.1 40.575) scale(1.06) translate(-53.1 -40.575)" d="M41.3 28 C44 24.6 47.5 23.25 52 23.25 C59.5 23.25 64.9 30 64.9 40.5 C64.9 50.8 59.5 57.9 52.5 57.9 C47.5 57.9 43.5 55.5 41.3 52.5 Z"/></clipPath></defs>
-<g clip-path="url(#markclip)" fill="none" stroke="currentColor">
-<circle cx="53.1" cy="40.575" r="17.325" stroke-width="2"/>
-<path d="M53.1 23.25 A4.5 17.325 0 0 1 53.1 57.9" stroke-width="1.8"/>
-<line x1="35" y1="40.575" x2="72" y2="40.575" stroke-width="1.8"/>
-</g>
-<g fill="currentColor">
-<path d="M26.25 21.2 L40.9 17.9 L41.3 17.9 L41.3 26 L33.4 26 L33.4 24 Q30 22.6 26.25 22.4 Z"/>
-<rect x="33.4" y="22" width="7.9" height="56"/>
-<path d="M26.25 79.6 Q33.4 78.8 33.4 75 L41.3 75 Q41.3 78.8 48.6 79.6 L48.6 82 L26.25 82 Z"/>
-<path fill-rule="evenodd" d="M41.3 24 C44.5 20 48.5 18 53.3 18 C65.5 18 73.8 27 73.8 39.5 C73.8 53 65 62.6 54 62.6 C48.5 62.6 44 60.5 41.3 57.5 Z M41.3 28 C44 24.6 47.5 23.25 52 23.25 C59.5 23.25 64.9 30 64.9 40.5 C64.9 50.8 59.5 57.9 52.5 57.9 C47.5 57.9 43.5 55.5 41.3 52.5 Z"/>
-</g></svg>
-</a></header><h1>Not found</h1><p><a href="/">Phileas</a> · <a href="/privacy/">Privacy policy</a></p>
-<footer>Phileas · <a href="mailto:privacy@phileasfogg.app">privacy@phileasfogg.app</a></footer>
+<body id="top">
+<header class="bar">
+<div class="bar-in">
+<a class="logo" href="/" aria-label="Phileas"><img class="v-d" src="/pictures/wordmark-dark.png" alt="" width="640" height="176"><img class="v-l" src="/pictures/wordmark-light.png" alt="" width="640" height="176" fetchpriority="low"></a>
+<div class="end"><label class="theme"><input type="checkbox" role="switch" id="theme-light" autocomplete="off"><svg class="moon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="18" height="18"><path d="M13.6 9.9A5.9 5.9 0 1 1 6.1 2.4a4.9 4.9 0 0 0 7.5 7.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><svg class="sun" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="18" height="18"><circle cx="8" cy="8" r="2.9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.05 3.05l1.2 1.2M11.75 11.75l1.2 1.2M3.05 12.95l1.2-1.2M11.75 4.25l1.2-1.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="vh">Light mode</span></label></div>
+</div>
+</header>
+<div class="site">
+<main id="main">
+<div class="doc-head">
+<h1>Not found</h1>
+<p class="doc-alt" lang="es">No encontrada</p>
+<p class="doc-links"><a href="/">Phileas</a> · <a href="/support/">Support</a> · <a href="/privacy/">Privacy policy</a></p>
+</div>
 </main>
+<footer id="footer">
+<nav class="links" aria-label="Phileas"><a href="mailto:support@phileasfogg.app">support@phileasfogg.app</a></nav>
+</footer>
+</div>
 </body>
 </html>
