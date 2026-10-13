@@ -1,12 +1,12 @@
 /* The landing (11 §6.1): the app's paper, its panels and Globe violet (09 §3), the app's serif from the
    system — no webfont, nothing from another host, no script but the theme's. Written by docs/store/build_site.py. */
-:root{--surface:#1C1615;--panel:#262020;--ink:#F3EBE9;--ink2:#A99C9A;--hairline:#463C3A;--brand:#B593DA;--brand-tint:#302838;--ocean:#4C7088;--ocean-line:rgba(255,255,255,.10);--ocean-ink:rgba(255,255,255,.6);--shadow:none;
+:root{--surface:#1C1615;--panel:#262020;--ink:#F3EBE9;--ink2:#A99C9A;--hairline:#463C3A;--brand:#B593DA;--brand-tint:#302838;--ocean:#4C7088;--ocean-line:rgba(255,255,255,.10);--ocean-ink:rgba(255,255,255,.6);
 --serif:ui-serif,"New York",Georgia,"Times New Roman",serif;
 --sans:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
---gutter:clamp(16px,4vw,40px);--bar-h:3.75rem;--gap:clamp(36px,5.5vw,68px);
+--gutter:clamp(16px,4vw,40px);--ocean-side:clamp(24px,4vw,56px);--bar-h:3.75rem;--gap:clamp(36px,5.5vw,68px);
 --step-h2:clamp(1.7rem,3.2vw,2.4rem);--step-lead:clamp(1.05rem,1.5vw,1.2rem);color-scheme:dark}
-:root:has(#theme-light:checked){--surface:#FEF8F7;--panel:#F6F0EF;--ink:#3E3230;--ink2:#766A69;--hairline:#E3DBDA;--brand:#7B57A8;--brand-tint:#E7D6F7;--ocean:#5F86A3;--ocean-line:rgba(255,255,255,.16);--ocean-ink:rgba(255,255,255,.72);--shadow:0 1px 2px rgba(62,50,48,.06),0 18px 40px -18px rgba(62,50,48,.28);color-scheme:light}
-:root[data-theme=light]{--surface:#FEF8F7;--panel:#F6F0EF;--ink:#3E3230;--ink2:#766A69;--hairline:#E3DBDA;--brand:#7B57A8;--brand-tint:#E7D6F7;--ocean:#5F86A3;--ocean-line:rgba(255,255,255,.16);--ocean-ink:rgba(255,255,255,.72);--shadow:0 1px 2px rgba(62,50,48,.06),0 18px 40px -18px rgba(62,50,48,.28);color-scheme:light}
+:root:has(#theme-light:checked){--surface:#FEF8F7;--panel:#F6F0EF;--ink:#3E3230;--ink2:#766A69;--hairline:#E3DBDA;--brand:#7B57A8;--brand-tint:#E7D6F7;--ocean:#5F86A3;--ocean-line:rgba(255,255,255,.16);--ocean-ink:rgba(255,255,255,.72);color-scheme:light}
+:root[data-theme=light]{--surface:#FEF8F7;--panel:#F6F0EF;--ink:#3E3230;--ink2:#766A69;--hairline:#E3DBDA;--brand:#7B57A8;--brand-tint:#E7D6F7;--ocean:#5F86A3;--ocean-line:rgba(255,255,255,.16);--ocean-ink:rgba(255,255,255,.72);color-scheme:light}
 *{box-sizing:border-box}
 /* An anchor, and a link reached with the keyboard, land below the sticky bar (11 §6.1, Navigation; R-REL-5
    AC7): padding on the scroller covers both, and the bar's height is in rem so it grows with the text. */
@@ -34,9 +34,11 @@ figure{margin:0}
 .lang{display:flex;gap:2px;padding:3px;border-radius:999px;border:1px solid var(--hairline);background:var(--panel)}
 .lang a{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.06em;padding:4px 10px;border-radius:999px;color:var(--ink2);text-decoration:none}
 .lang a[aria-current]{background:var(--brand-tint);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
-.shot{display:block;width:100%;height:auto;border-radius:clamp(22px,3.2vw,38px);border:1px solid var(--hairline);box-shadow:var(--shadow);background:var(--panel)}
+/* A picture is Apple's bezel with the screen in it, shown as is: no border, radius, shadow, background,
+   filter or motion of ours, in any state (11 §6.1, The pictures; R-REL-5 AC11). */
+.shot{display:block;width:100%;height:auto}
 /* The hero, read in five seconds: the question, the sentence, three points. */
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(24px,4vw,48px) var(--gap)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(min(100%,calc(380px + 2 * var(--ocean-side))),1.05fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(24px,4vw,48px) var(--gap)}
 .hero .question{color:var(--ink);font-family:var(--serif);font-size:clamp(2rem,4.2vw,3.1rem);line-height:1.08;letter-spacing:-.015em;text-wrap:balance}
 .hero .lead{margin-top:16px;font-size:var(--step-lead);color:var(--ink2);max-width:36ch}
 .points{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--hairline);max-width:32rem}
@@ -47,14 +49,17 @@ figure{margin:0}
 .arrow{grid-column:2;grid-row:1/span 2;align-self:center;color:var(--brand)}
 .point a:hover .pt{color:var(--brand)}
 .soon{display:inline-block;margin-top:26px;padding:10px 18px;border-radius:999px;border:1px solid var(--hairline);background:var(--panel);color:var(--ink);font-size:.95rem;font-weight:600}
-.ocean{position:relative;border-radius:32px;overflow:hidden;padding:clamp(28px,5vw,56px) clamp(24px,6vw,72px) 0;
+/* The hero's phone the one width too (11 §6.1, The pictures, 2026-10-13): its column holds the phone and the
+   ocean's sides wherever two columns fit; the sides were up to 72 px, which drew it 356 at 1280. */
+.ocean{position:relative;border-radius:32px;padding:clamp(28px,5vw,56px) var(--ocean-side);
 background:repeating-linear-gradient(180deg,transparent 0 5px,var(--ocean-line) 5px 6px),radial-gradient(120% 90% at 30% 10%,rgba(255,255,255,.10),transparent 60%),var(--ocean)}
-.ocean::before,.ocean::after{content:"";position:absolute;left:-10%;right:-10%;border-top:1.5px dashed var(--ocean-ink);opacity:.35;transform:rotate(-4deg)}
+/* The ocean clips nothing (it holds a phone that may not be cropped): its lines end inside its edges. */
+.ocean::before,.ocean::after{content:"";position:absolute;left:0;right:0;border-top:1.5px dashed var(--ocean-ink);opacity:.35;transform:rotate(-4deg)}
 .ocean::before{top:30%}.ocean::after{top:72%;border-top-style:dotted}
 .sea{position:absolute;z-index:1;font-family:var(--serif);font-style:italic;letter-spacing:.32em;text-transform:uppercase;font-size:.78rem;color:var(--ocean-ink);white-space:nowrap}
 .sea.one{top:clamp(8px,2vw,20px);left:clamp(14px,3vw,28px);transform:rotate(-2deg)}.sea.two{bottom:18%;right:clamp(4px,1.2vw,14px);writing-mode:vertical-rl;letter-spacing:.24em}
-.ocean .phone{position:relative;z-index:2;max-width:340px;margin:0 auto}
-.ocean .shot{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+/* The phone whole in its ocean, never running off its edge (Apple: no cropping). */
+.ocean .phone{position:relative;z-index:2;max-width:380px;margin:0 auto}
 .fine{margin-top:14px;font-size:.8rem;line-height:1.45;color:var(--ink2);max-width:46ch}
 /* Three chapters, a small label above each (11 §6.1, Navigation). */
 .chapter{border-top:1px solid var(--hairline);padding-top:clamp(28px,4vw,44px)}
@@ -62,8 +67,10 @@ background:repeating-linear-gradient(180deg,transparent 0 5px,var(--ocean-line) 
 .eyebrow::before{content:"";width:24px;height:2px;border-radius:2px;background:currentColor}
 .chapter>.eyebrow+section{border-top:0;padding-top:clamp(16px,2.5vw,28px)}
 .chapter>.eyebrow+.block.panel{margin-top:20px}
-.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,80px);align-items:center;padding-block:var(--gap);border-top:1px solid var(--hairline)}
-.row.flip .words{order:2}
+/* The picture's column holds the one width wherever two columns fit (it drew a row's phone 353 just
+   above the 820 px break, beside the hero's 380): the words' column gives way. */
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(min(100%,380px),1fr);gap:clamp(28px,6vw,80px);align-items:center;padding-block:var(--gap);border-top:1px solid var(--hairline)}
+.row.flip{grid-template-columns:minmax(min(100%,380px),1fr) minmax(0,1fr)}.row.flip .words{order:2}
 .words{max-width:30rem;min-width:0}
 .words h2,.section-head h2{font-size:var(--step-h2)}
 .words>p,.block>p{margin-top:16px;color:var(--ink2);font-size:1.05rem;max-width:62ch}
@@ -74,9 +81,10 @@ background:repeating-linear-gradient(180deg,transparent 0 5px,var(--ocean-line) 
 h2 .tag{margin-left:.6em;position:relative;top:-.2em}
 .tag.free{color:var(--ink2);background:var(--panel);border:1px solid var(--hairline)}
 .pic{min-width:0;display:flex;flex-direction:column;align-items:center}
-.pic>.phone{width:min(340px,100%)}
-.pic>.phone.wide{width:min(400px,100%)}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(540px,100%);align-items:start}
+/* The boxes are the framed phone's, one width for every single phone (the widgets' too, since 2026-10-13):
+   the screen inside them the 340 it was before the bezel. */
+.pic>.phone{width:min(380px,100%)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(604px,100%);align-items:start}
 .pair .phone:last-child{margin-top:36px}
 .items{display:grid;gap:16px;margin-top:22px}
 .item h3{font-size:1.3rem}
@@ -108,19 +116,25 @@ footer .disclaimer{max-width:60ch}
 margin-inline:calc(-1 * var(--gutter));padding:3px var(--gutter) 11px}
 .chips::-webkit-scrollbar{display:none}
 .chip{background:var(--panel);border:1px solid var(--hairline);padding:6px 14px;font-size:.9rem}
-.hero,.row{grid-template-columns:minmax(0,1fr)}.row.flip .words{order:0}.hero{padding-block:20px var(--gap)}
-.pair{grid-template-columns:minmax(0,1fr);width:min(340px,100%);gap:24px}.pair .phone:last-child{margin-top:0}}
+.hero,.row,.row.flip{grid-template-columns:minmax(0,1fr)}.row.flip .words{order:0}.hero{padding-block:20px var(--gap)}
+.pair{grid-template-columns:minmax(0,1fr);width:min(380px,100%);gap:24px}.pair .phone:last-child{margin-top:0}}
 /* A phone: EN · ES beside the wordmark, the toggle at the end of the chip row, so the first row holds
    two things at 320 px and at 200 % text (the UX review, 2026-10-13; R-REL-5 AC7). */
 @media (max-width:520px){.bar-in{grid-template-areas:"logo lang" "chips theme"}
 .end{display:contents}.lang{grid-area:lang;justify-self:end}
 .bar .theme{grid-area:theme;justify-self:end;align-self:start}
 .chips{margin-inline:calc(-1 * var(--gutter)) 0;padding-right:20px;
--webkit-mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent)}}
+-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent)}
+/* The hero's framed phone keeps its screen near the size it had before the bezel: a narrower sea around
+   it, and the vertical sea's name, which would sit against the phone's side, left out. Every other phone
+   leaves the same room each side, so the hero's and a row's are still one width (11 §6.1, The pictures). */
+:root{--phone-inset:12px}
+.ocean{padding-inline:var(--phone-inset)}.sea.two{display:none}
+.pic>.phone,.pair{width:min(380px,100% - 2 * var(--phone-inset))}}
 /* A phone held sideways: the bar scrolls away rather than keep a quarter of the screen. */
 @media (max-height:520px){.bar{position:static}html{scroll-padding-top:12px}}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}
-.ocean .phone{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}@keyframes rise{from{transform:translateY(24px)}to{transform:none}}}
+/* No rise for the hero's phone since the bezel (Apple: no animating the product image). */
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 /* The documents (11 §6.1, The documents): /privacy/, /support/ and the 404, whose root has class="doc" —
    the landing's bar in one row, its type and tokens; the policy set as a legal text, about 68 characters a line. */
 html.doc{--bar-h:3.75rem}
